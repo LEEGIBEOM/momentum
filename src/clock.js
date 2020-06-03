@@ -18,7 +18,13 @@ const displayClock = () => {
   const hour = date.getHours();
   const minute = date.getMinutes();
   time.innerText = `${
-    hour < 13 ? (hour < 10 ? "0" + hour : hour) : hour - 12
+    hour < 13
+      ? hour < 10
+        ? "0" + hour
+        : hour
+      : hour - 12 < 10
+      ? "0" + hour
+      : hour
   }:${minute < 10 ? "0" + minute : minute}`;
 
   format.innerText = hour < 13 ? "AM" : "PM";
