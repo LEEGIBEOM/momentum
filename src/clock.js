@@ -23,8 +23,8 @@ const displayClock = () => {
         ? "0" + hour
         : hour
       : hour - 12 < 10
-      ? "0" + hour
-      : hour
+      ? "0" + hour - 12
+      : hour - 12
   }:${minute < 10 ? "0" + minute : minute}`;
 
   format.innerText = hour < 13 ? "AM" : "PM";
@@ -57,10 +57,10 @@ const checkName = () => {
   }
 };
 
-const init = () => {
+const clockInit = () => {
   displayClock();
   checkName();
   setInterval(displayClock, 10000);
 };
 
-init();
+clockInit();
