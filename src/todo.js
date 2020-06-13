@@ -19,24 +19,49 @@ const handleClickTodoHeader = () => {
 };
 
 const saveTodo = (todo) => {
-  todos.push(todo);
-  localStorage.setItem(TODOS, todos);
+  const todoObj = {
+    todo,
+    id: todos.length + 1,
+  };
+  todos.push(todoObj);
+  localStorage.setItem(TODOS, JSON.stringify(todos));
 };
 
 const handleSubmitTodo = (e) => {
   e.preventDefault();
-  saveTodo(todoInput.value);
-  displayTodos(todoInput.value);
-  todoInput.value = "";
+  if (todoInput.value) {
+    saveTodo(todoInput.value);
+    displayTodos(todoInput.value);
+    todoInput.value = "";
+    if (todoList.classList.contains("hidden")) {
+      todoHeaderIcon.style.transform = "rotate(180deg)";
+      todoList.classList.remove("hidden");
+      todoHeader.style.backgroundColor = "#2d3436";
+    }
+  }
 };
 
-const handelClickDelBtn = () => {};
+const handelClickDelBtn = (e) => {
+  const delTodo = e.target.parentNode;
+  const cleanTodos = todos.filter((el) => parseInt(delTodo.id, 10) !== el.id);
+  todos.length = 0;
+  todoList.innerHTML = "";
+  if (cleanTodos.length !== 0) {
+    cleanTodos.forEach((el) => {
+      saveTodo(el.todo);
+      displayTodos(el.todo);
+    });
+  } else {
+    localStorage.removeItem(TODOS);
+  }
+};
 
 const displayTodos = (todo) => {
   const li = document.createElement("li");
   const checkBox = document.createElement("input");
   const span = document.createElement("span");
   const delBtn = document.createElement("button");
+  li.id = todos[todos.length - 1].id;
   checkBox.type = "checkbox";
   checkBox.addEventListener("change", () => {
     if (checkBox.checked) span.style.textDecoration = "line-through";
@@ -57,8 +82,11 @@ const displayTodos = (todo) => {
 const checkTodos = () => {
   const savedTodos = localStorage.getItem(TODOS);
   if (savedTodos) {
-    todos = savedTodos.split(",");
-    todos.forEach((todo) => displayTodos(todo));
+    const parsedTodos = JSON.parse(savedTodos);
+    parsedTodos.forEach((el) => {
+      saveTodo(el.todo);
+      displayTodos(el.todo);
+    });
   }
 };
 

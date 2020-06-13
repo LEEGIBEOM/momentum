@@ -3,8 +3,8 @@ Momentum clone made with Vanilla JS
 
 ## Features
 - [x] Clock
-- [ ] Message
-- [ ] ToDoList
+- [x] Message
+- [x] ToDoList
 - [ ] Weather
 - [ ] Random Background
 
