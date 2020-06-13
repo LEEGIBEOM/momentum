@@ -126,8 +126,7 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   font-size: 1em;
-  background-color: #2d3436;
-  transition-duration: 2s;
+  background-color: rgba(45, 52, 54, 0.7);
   width: 300px;
   min-height: 200px;
   max-height: 300px;
@@ -136,18 +135,20 @@ body {
   border-radius: 0 0 10px 10px;
 }
 .content-todo-list li {
-  width: 200px;
+  width: 250px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 5px 50px;
+  padding: 6px 25px;
 }
 .content-todo-list input {
   width: 16px;
   height: 16px;
 }
 .content-todo-list span {
-  font-size: 0.7em;
+  font-size: 0.6em;
+  flex-grow: 1;
+  text-align: start;
 }
 .content-todo-list button {
   background-color: inherit;
@@ -155,7 +156,6 @@ body {
   outline: none;
   font-size: 0.3em;
   cursor: pointer;
-  justify-self: right;
 }
 .content-todo-list button:hover {
   transform: scale(1.1);
@@ -183,4 +183,27 @@ body {
   opacity: 0.7;
   z-index: -1;
   animation: fadeIn 1s linear;
+}
+
+.weather {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16pt;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 10px;
+}
+.weather span {
+  margin: 5px;
+}
+.weather__place {
+  font-size: 20pt;
+  font-weight: 500;
 }
