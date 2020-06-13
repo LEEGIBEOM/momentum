@@ -5,7 +5,7 @@ Momentum clone made with Vanilla JS
 - [x] Clock
 - [x] Message
 - [x] ToDoList
+- [x] Random Background
 - [ ] Weather
-- [ ] Random Background
 
 [Enter the page](https://leegibeom.github.io/momentum/)
