@@ -207,3 +207,14 @@ body {
   font-size: 20pt;
   font-weight: 500;
 }
+.weather__place svg {
+  width: 0.4em;
+  height: 0.4em;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all ease 2s;
+}
+.weather__place svg:hover {
+  transform: rotate(360deg);
+  color: #ffffff;
+}
